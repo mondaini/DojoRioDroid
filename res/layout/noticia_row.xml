@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:stretchColumns="1">
+	
+	<TableRow>
+<!-- Título -->
+		<TextView android:id="@+id/tituloNoticia" android:text="" android:textStyle="bold" />	
+	</TableRow>
+	
+	<TableRow>
+<!-- Comentários -->
+		<TextView android:id="@+id/idComentarios" android:text="" />
+	</TableRow>
+
+	<View android:layout_height="2dip" android:background="#FF909090" />
+</TableLayout>
