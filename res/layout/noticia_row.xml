@@ -5,12 +5,12 @@
 	
 	<TableRow>
 <!-- Título -->
-		<TextView android:id="@+id/tituloNoticia" android:text="" android:textStyle="bold" />	
+		<TextView android:id="@+id/textTituloNoticia" android:text="" android:textStyle="bold" />	
 	</TableRow>
 	
 	<TableRow>
 <!-- Comentários -->
-		<TextView android:id="@+id/idComentarios" android:text="" />
+		<TextView android:id="@+id/textQuantidadeComentarios" android:text="" />
 	</TableRow>
 
 	<View android:layout_height="2dip" android:background="#FF909090" />
