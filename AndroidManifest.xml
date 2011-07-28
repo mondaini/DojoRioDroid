@@ -13,6 +13,9 @@
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
+        <activity android:name=".activities.ListaNoticias" android:clearTaskOnLaunch="true"></activity>
+        <activity android:name=".activities.Local"></activity>
+        <activity android:name=".activities.ListaLocais"></activity>
 
 
     </application>

@@ -1,70 +1,38 @@
 package mondaini.android.bagulhodoido.activities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import mondaini.android.bagulhodoido.R;
-import mondaini.android.bagulhodoido.adapters.NoticiaAdapter;
-import mondaini.android.bagulhodoido.model.Noticia;
-import mondaini.android.bagulhodoido.util.RSSReader;
-import android.app.Activity;
-import android.app.ProgressDialog;
+import android.app.TabActivity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.widget.ListView;
+import android.widget.TabHost;
 
 
-public class Main extends Activity{
-	private ListView lvNoticias; 
-	private List<Noticia> listNoticias;
-	private NoticiaAdapter noticiaAdapter;
-	
+public class Main extends TabActivity{
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.main);		
 		
-		final ProgressDialog dialog = ProgressDialog.show(Main.this, "", "Loading. Please wait...", true);
-		
-		new Thread(){
-			@Override
-			public void run() {				
-				listNoticias = new RSSReader().getNoticias();
-				//listNoticias = new ArrayList<Noticia>();
-				//listNoticias.add(new Noticia("aaa", "bbb", "ccc", "ddd"));
-				
-				Bundle bundle = new Bundle();
-				bundle.putBoolean("loading", true);
-				
-				Message msg = new Message();
-				msg.setData(bundle);
-				
-				handler.sendMessage(msg);
-				dialog.dismiss();
-			}
-		}.start();
+        Resources res = getResources();
+        TabHost tabHost = getTabHost();
+        TabHost.TabSpec spec;
+        Intent intent;
+        
+        intent = new Intent(getApplicationContext(), ListaNoticias.class);
+        spec = tabHost.newTabSpec("noticias").setIndicator("Blog", res.getDrawable(R.drawable.rss_high)).setContent(intent);
+        tabHost.addTab(spec);
+        
+        intent = new Intent(getApplicationContext(), ListaLocais.class);
+        spec = tabHost.newTabSpec("locais").setIndicator("Onde?", res.getDrawable(R.drawable.calendar_high)).setContent(intent);
+        tabHost.addTab(spec);
 		
 	}
-		
-	private Handler handler = new Handler(){
-		@Override
-		public void handleMessage(android.os.Message msg) {
-			Bundle bundle = msg.getData();
-			Boolean result = bundle.getBoolean("loading");
-			if (result != null && result == true){
-				noticiaAdapter = new NoticiaAdapter(Main.this, listNoticias);
-				lvNoticias = (ListView)findViewById(R.id.listNoticias);
-				lvNoticias.setAdapter(noticiaAdapter);
-			}
-		};
-	};
-	
-	
-	//TODO Criar Tab com os Endereços do local onde surgem os eventos
-	//TODO Criar Tab com as noticias do Blog	
+			
+	//TODO Implementar Tab com os Endereços do local onde surgem os eventos
+	//TODO Finalizar implementação da Tab com as noticias do Blog: eventos nos itens da lista, mais informações, etc.	
 	//TODO Listar Endereços do Google Maps para abrir aqui no app.
 	
 }
