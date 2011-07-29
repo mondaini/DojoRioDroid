@@ -3,5 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+   <TextView android:text="Últimas notícias:" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="20sp"/>
    <ListView android:id="@+id/listNoticias" android:layout_width="fill_parent" android:layout_height="fill_parent"/>
 </LinearLayout>

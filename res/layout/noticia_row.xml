@@ -3,15 +3,19 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:stretchColumns="1">
 	
-	<TableRow>
-<!-- Título -->
-		<TextView android:id="@+id/textTituloNoticia" android:text="" android:textStyle="bold" />	
-	</TableRow>
+	<View android:layout_height="2dip" android:background="#B9B9B9" />
 	
 	<TableRow>
-<!-- Comentários -->
-		<TextView android:id="@+id/textQuantidadeComentarios" android:text="" />
+		<TextView android:id="@+id/textTituloNoticia" android:textStyle="bold" android:layout_width="wrap_content" android:textSize="16sp" />	
 	</TableRow>
 
-	<View android:layout_height="2dip" android:background="#FF909090" />
+	<TableRow>
+		<TextView android:id="@+id/textDescricaoNoticia" />
+	</TableRow>
+
+	<TableRow>
+		<TextView android:id="@+id/textPublishDate" />
+	</TableRow>
+
+	
 </TableLayout>

@@ -51,13 +51,12 @@ public class RSSReader {
 						getElementValue(element,"pubDate"));
 				listaNoticias.add(noticia);
 			}
+			return listaNoticias;
 		}
 		catch(Exception ex) {
 			Log.e("BagulhoDoido", "Erro fatal em getNoticias(): "+ex.toString());
+			return new ArrayList<Noticia>();
 		}
-		
-		return listaNoticias;
-
 	}
 
 	private String getCharacterDataFromElement(Element e) {

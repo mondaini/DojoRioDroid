@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-
 public class Main extends TabActivity{
 
 	@Override

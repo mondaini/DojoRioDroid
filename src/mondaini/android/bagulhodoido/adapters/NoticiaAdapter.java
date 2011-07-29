@@ -34,11 +34,12 @@ public class NoticiaAdapter extends BaseAdapter{
 	@Override
 	public long getItemId(int position) {
 		return position;
-		//TODO: Test if this thing really works.
 	}
 
 	static class ViewHolder{
-		TextView tvTitulo;
+		TextView textViewTitulo;
+		TextView textViewDescricaoNoticia;
+		TextView textViewPublishDate;
 	}
 
 	@Override
@@ -50,15 +51,19 @@ public class NoticiaAdapter extends BaseAdapter{
 			convertView = inflater.inflate(R.layout.noticia_row, null);
 
 			holder = new ViewHolder();
-			holder.tvTitulo = (TextView) convertView.findViewById(R.id.textTituloNoticia);
+			holder.textViewTitulo = (TextView) convertView.findViewById(R.id.textTituloNoticia);
+			holder.textViewDescricaoNoticia = (TextView) convertView.findViewById(R.id.textDescricaoNoticia);
+			holder.textViewPublishDate = (TextView) convertView.findViewById(R.id.textPublishDate);
 			convertView.setTag(holder);
 		}
 		else{
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		Noticia noticia = lista.get(position);		 
-		holder.tvTitulo.setText(noticia.titulo);
+		Noticia noticia = lista.get(position);
+		holder.textViewTitulo.setText("\n"+noticia.titulo+"\n");
+		holder.textViewDescricaoNoticia.setText(noticia.descricao+"\n");
+		holder.textViewPublishDate.setText(noticia.publishDate+"\n");
 
 		return convertView;
 
