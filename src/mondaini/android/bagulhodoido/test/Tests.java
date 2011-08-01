@@ -16,5 +16,5 @@ public class Tests {
 		this.noticiasRSS = RSSReader.getInstance().getNoticias();
 		assertNotNull(noticiasRSS);
 	}
-	
+
 }
