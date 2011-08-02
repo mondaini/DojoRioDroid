@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class ListaLocais extends Activity {
+public class LocalActivity extends Activity{
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		TextView tv = new TextView(this);
-		tv.setText("Locais");
+		tv.setText("Local");
 		setContentView(tv);
 	}
 }

@@ -7,7 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-public class Main extends TabActivity{
+public class MainActivity extends TabActivity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +20,11 @@ public class Main extends TabActivity{
         TabHost.TabSpec spec;
         Intent intent;
         
-        intent = new Intent(getApplicationContext(), ListaNoticias.class);
+        intent = new Intent(getApplicationContext(), ListaNoticiasActivity.class);
         spec = tabHost.newTabSpec("noticias").setIndicator("Blog", res.getDrawable(R.drawable.rss_high)).setContent(intent);
         tabHost.addTab(spec);
         
-        intent = new Intent(getApplicationContext(), ListaLocais.class);
+        intent = new Intent(getApplicationContext(), ListaLocaisActivity.class);
         spec = tabHost.newTabSpec("locais").setIndicator("Onde?", res.getDrawable(R.drawable.calendar_high)).setContent(intent);
         tabHost.addTab(spec);
 		
