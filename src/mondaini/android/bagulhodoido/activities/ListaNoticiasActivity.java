@@ -26,7 +26,7 @@ public class ListaNoticiasActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+			
 		setContentView(R.layout.noticia_list);
 		
 		this.lvNoticias = (ListView)this.findViewById(R.id.listNoticias);
@@ -46,7 +46,7 @@ public class ListaNoticiasActivity extends Activity{
 	    	Toast.makeText(ListaNoticiasActivity.this, "Lista de notícias atualizada com sucesso!", Toast.LENGTH_LONG).show();
 			if (result == true){			
 				noticiaAdapter = new NoticiaAdapter(ListaNoticiasActivity.this, noticias);			
-				lvNoticias.setOnItemClickListener(new ListaNoticiasOnClick(ListaNoticiasActivity.this, noticias));
+				lvNoticias.setOnItemClickListener(new OnClickListaNoticias(ListaNoticiasActivity.this, noticias));
 				lvNoticias.setAdapter(noticiaAdapter);
 			}else{
 				Toast.makeText(ListaNoticiasActivity.this, "Me desculpe, não foi possível baixar o feed RSS\n:-(", Toast.LENGTH_LONG).show();
@@ -54,7 +54,7 @@ public class ListaNoticiasActivity extends Activity{
 	    }
 
 		@Override
-		protected Boolean doInBackground(Void... params) {			
+		protected Boolean doInBackground(Void... params) {		
 			noticias = new RSSReader().getNoticias();
 			if (noticias.size() != 0){
 				return true;		
@@ -65,11 +65,11 @@ public class ListaNoticiasActivity extends Activity{
 		}		
 	}	
 
-	class ListaNoticiasOnClick implements OnItemClickListener{
+	class OnClickListaNoticias implements OnItemClickListener{
 		private Context context;
 		private List<Noticia> noticias;
 		
-		public ListaNoticiasOnClick(Context context, List<Noticia> noticias){
+		public OnClickListaNoticias(Context context, List<Noticia> noticias){
 			this.context = context;
 			this.noticias = noticias;
 		}

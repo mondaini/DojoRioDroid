@@ -29,9 +29,5 @@ public class MainActivity extends TabActivity{
         tabHost.addTab(spec);
 		
 	}
-			
-	//TODO Implementar Tab com os Endereços do local onde surgem os eventos
-	//TODO Finalizar implementação da Tab com as noticias do Blog: eventos nos itens da lista, mais informações, etc.	
-	//TODO Listar Endereços do Google Maps para abrir aqui no app.
 	
 }

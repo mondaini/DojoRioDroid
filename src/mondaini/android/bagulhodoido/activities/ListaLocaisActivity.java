@@ -5,39 +5,40 @@ import java.util.List;
 import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.adapters.LocalAdapter;
 import mondaini.android.bagulhodoido.db.DBAdapter;
+import mondaini.android.bagulhodoido.db.Data;
 import mondaini.android.bagulhodoido.model.Local;
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class ListaLocaisActivity extends Activity {
 	private ListView lvLocais;
-	private List<Local> locais;
+	public List<Local> locais;
 	private LocalAdapter localAdapter;
 	private DBAdapter mDb;
 
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.local_list);
 		this.lvLocais = (ListView) findViewById(R.id.listLocais);
 		mDb = new DBAdapter(this);
-		mDb.open();
-		new GetAllLocais().execute();
-
+		new GetLocais().execute();
 	}
 
-	class GetAllLocais extends AsyncTask<Void, Void, Boolean>{
+	class GetLocais extends AsyncTask<Void, Void, Boolean>{
 
 		@Override
-		protected Boolean doInBackground(Void... arg) {			
+		protected Boolean doInBackground(Void... arg) {
+			mDb.open();
+			new Data(ListaLocaisActivity.this).insertInitialData();
 			ListaLocaisActivity.this.locais = mDb.getLocais();
 			if (locais != null && locais.size() > 0){
 				return true;
@@ -53,29 +54,30 @@ public class ListaLocaisActivity extends Activity {
 			Toast.makeText(ListaLocaisActivity.this, "Lista de notícias atualizada com sucesso!", Toast.LENGTH_LONG).show();
 			if (result == true){			
 				localAdapter = new LocalAdapter(ListaLocaisActivity.this, locais);
-				lvLocais.setOnItemClickListener(new ListaNoticiasOnClick(ListaLocaisActivity.this, locais));
+				lvLocais.setOnItemClickListener(new OnClickListaLocais());
 				lvLocais.setAdapter(localAdapter);
 			}else{
-				Toast.makeText(ListaLocaisActivity.this, "Me desculpe, não foi possível baixar o feed RSS\n:-(", Toast.LENGTH_LONG).show();
+				Toast.makeText(ListaLocaisActivity.this, "Ocorreu um erro ao buscar a lista de locais\n:-(", Toast.LENGTH_LONG).show();
 			}
 			mDb.close();
 		}
 
 	}
 
-	class ListaNoticiasOnClick implements OnItemClickListener {
-		private Context context;
-		private List<Local> locais;
-		
-		public ListaNoticiasOnClick(Context context, List<Local> locais){
-			this.context = context;
-			this.locais = locais;
-		}
-
+	class OnClickListaLocais implements OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
-			//TODO: Set intent, to redirect to google maps or to another activity with the mapview.
-			Toast.makeText(this.context, "Voce clicou na position: "+String.valueOf(position), Toast.LENGTH_SHORT);
+		public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {		
+			Local local = ListaLocaisActivity.this.locais.get(position);
+			
+			String endereco = local.endereco;			
+			endereco = endereco.replace(' ', '+');
+
+			String GEO_URI = "geo:0,0?q=";
+			Uri uriGeo = Uri.parse(GEO_URI + endereco);
+
+			Intent it = new Intent(android.content.Intent.ACTION_VIEW, uriGeo);
+			startActivity(it);		
 		}
+		
 	}
 }

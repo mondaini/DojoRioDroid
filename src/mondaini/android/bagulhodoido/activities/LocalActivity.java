@@ -7,7 +7,6 @@ import android.widget.TextView;
 public class LocalActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		TextView tv = new TextView(this);
 		tv.setText("Local");

@@ -12,6 +12,10 @@
 	<TableRow>
 		<TextView android:id="@+id/textEndereco" />
 	</TableRow>
+	
+	<TableRow>
+		<TextView android:id="@+id/textDetalhes" />
+	</TableRow>
 
 	<TableRow>
 		<TextView android:id="@+id/textAgenda" />

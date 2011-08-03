@@ -5,18 +5,31 @@ public class Local {
 	private long id;
 	public String nomeLocal;
 	public String endereco;
+	public String detalhes;
+	public String agenda;
 	private long latitude; 
 	private long longitude;
-	public String agenda;
+
 		
-	public Local(long id, String nome, String endereco, long latitude, long longitude, String agenda) {
+	public Local(long id, String nome, String endereco, String detalhes, String agenda, long latitude, long longitude) {
 		super();
 		this.id = id;
 		this.nomeLocal = nome;
 		this.endereco = endereco;
+		this.detalhes = detalhes;
+		this.agenda = agenda;
 		this.setLatitude(latitude);
 		this.setLongitude(longitude);
+	}
+	
+	public Local(String nome, String endereco, String detalhes, String agenda, long latitude, long longitude) {
+		super();
+		this.nomeLocal = nome;
+		this.endereco = endereco;
+		this.detalhes = detalhes;
 		this.agenda = agenda;
+		this.setLatitude(latitude);
+		this.setLongitude(longitude);
 	}
 
 	//TODO: Create a better solution here.	

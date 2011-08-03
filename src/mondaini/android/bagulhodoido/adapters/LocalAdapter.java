@@ -39,6 +39,7 @@ public class LocalAdapter extends BaseAdapter{
 	static class ViewHolder{
 		TextView textViewNomeLocal;
 		TextView textViewEndereco;
+		TextView textViewDetalhes;
 		TextView textViewAgenda;
 	}
 
@@ -53,6 +54,7 @@ public class LocalAdapter extends BaseAdapter{
 			holder = new ViewHolder();
 			holder.textViewNomeLocal = (TextView) convertView.findViewById(R.id.textNomeLocal);
 			holder.textViewEndereco = (TextView) convertView.findViewById(R.id.textEndereco);
+			holder.textViewDetalhes = (TextView) convertView.findViewById(R.id.textDetalhes);
 			holder.textViewAgenda = (TextView) convertView.findViewById(R.id.textAgenda);
 			convertView.setTag(holder);
 		}
@@ -63,6 +65,7 @@ public class LocalAdapter extends BaseAdapter{
 		Local local = lista.get(position);
 		holder.textViewNomeLocal.setText("\n"+local.nomeLocal+"\n");
 		holder.textViewEndereco.setText(local.endereco+"\n");
+		holder.textViewDetalhes.setText(local.detalhes+"\n");
 		holder.textViewAgenda.setText(local.agenda+"\n");
 
 		return convertView;
