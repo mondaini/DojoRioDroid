@@ -36,7 +36,6 @@ public class DBAdapter {
 	public static final int KEY_LOCAL_LATITUDE = 5; 
 	public static final int KEY_LOCAL_LONGITUDE = 6;	
 
-	
 	private static final String DATABASE_CREATE = "create table "+TABLE_LOCAL+" ("
 			+ LOCAL_ID + " integer primary key autoincrement, "
 			+ LOCAL_NOME + " text not null, "
@@ -46,6 +45,55 @@ public class DBAdapter {
 			+ LOCAL_LATITUDE + " real null, "
 			+ LOCAL_LONGITUDE + " real null);";
 
+	String QUERY_INSERT_LOCAIS = "insert into "+TABLE_LOCAL
+			+ " ("
+			+ LOCAL_NOME + ", " 
+			+ LOCAL_ENDERECO + ", " 
+			+ LOCAL_DETALHES + ", " 
+			+ LOCAL_AGENDA + ", "
+			+ LOCAL_LATITUDE + ", "
+			+ LOCAL_LONGITUDE + ") values (?, ?, ?, ?, ?, ?);";
+	
+	public static final ArrayList<Object[]> createLocalList(){
+		ArrayList<Object[]> locais = new ArrayList<Object[]>();		
+			
+		locais.add(new Object[]{"UFF",
+			"Rua Passo da Pátria, 156 – Boa Viagem – Niterói",
+			"Campus Praia Vermelha (campus de Engenharia da UFF) - Sala 230B – Bloco D {prédio novo)",
+			"Quinta-feira às 19h00",
+			"0",
+			"0"});
+		
+		locais.add(new Object[]{"UFF ",
+			"Rua Passo da Pátria, 156 – Boa Viagem – Niterói",
+			"Campus Praia Vermelha (campus de Engenharia da UFF) - Sala 230B – Bloco D {prédio novo)",
+			"Sexta-feira às 11h00",
+			null,
+			null});
+						
+		locais.add(new Object[]{"IFF",
+			"Rua Doutor Siqueira, 273 – Parque Tamandaré – Campos dos Goytacazes",
+			"Campus Campos-Centro - Sala 6 – Bloco E (coordenação de Informática)",
+			"Terça-feira às 16h00",
+			null,
+			null});
+					
+		locais.add(new Object[]{"UENF",
+			"Avenida Alberto Lamego, 2000 – Parque Califórnia – Campos dos Goytacazes",
+			"Prédio P5, Térreo, Auditório 2",
+			"Terça-feira às 18h15",
+			null,
+			null});
+						
+		locais.add(new Object[]{"Petrópolis",
+			"Avenida Getúlio Vargas, 335 – Petrópolis",
+			"Sala 5 – IST/CPTI (Ao lado do LNCC)",
+			"Sábados a cada 15 dias às 15h00",
+			null,
+			null});
+		
+		return locais;
+	}
 	
 	private DatabaseHelper mDbHelper;
 	private SQLiteDatabase mDb;
@@ -61,6 +109,10 @@ public class DBAdapter {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL(DATABASE_CREATE);
+			
+			for (Object[] values: createLocalList()){
+				db.execSQL(QUERY_INSERT_LOCAIS, values); //Populate Initial Data
+			}
 		}
 
 		@Override
@@ -128,5 +180,6 @@ public class DBAdapter {
 		c.close();
 		return locais;
 	}
+	
 	
 }

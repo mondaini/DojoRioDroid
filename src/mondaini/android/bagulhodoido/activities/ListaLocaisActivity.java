@@ -5,7 +5,6 @@ import java.util.List;
 import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.adapters.LocalAdapter;
 import mondaini.android.bagulhodoido.db.DBAdapter;
-import mondaini.android.bagulhodoido.db.Data;
 import mondaini.android.bagulhodoido.model.Local;
 import android.app.Activity;
 import android.content.Intent;
@@ -38,7 +37,6 @@ public class ListaLocaisActivity extends Activity {
 		@Override
 		protected Boolean doInBackground(Void... arg) {
 			mDb.open();
-			new Data(ListaLocaisActivity.this).insertInitialData();
 			ListaLocaisActivity.this.locais = mDb.getLocais();
 			if (locais != null && locais.size() > 0){
 				return true;
