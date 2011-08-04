@@ -36,3 +36,7 @@ Thumbs.db
 # Directories #
 ###############
 bin/*
+
+# Android Generated files #
+###########################
+R.java
