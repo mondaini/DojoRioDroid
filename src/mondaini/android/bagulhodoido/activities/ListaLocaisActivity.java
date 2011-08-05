@@ -1,5 +1,6 @@
 package mondaini.android.bagulhodoido.activities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mondaini.android.bagulhodoido.R;
@@ -8,7 +9,6 @@ import mondaini.android.bagulhodoido.db.DBAdapter;
 import mondaini.android.bagulhodoido.model.Local;
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -48,8 +48,7 @@ public class ListaLocaisActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(Boolean result) {
-			super.onPostExecute(result);
-			Toast.makeText(ListaLocaisActivity.this, "Lista de notícias atualizada com sucesso!", Toast.LENGTH_LONG).show();
+			super.onPostExecute(result);			
 			if (result == true){			
 				localAdapter = new LocalAdapter(ListaLocaisActivity.this, locais);
 				lvLocais.setOnItemClickListener(new OnClickListaLocais());
@@ -65,16 +64,22 @@ public class ListaLocaisActivity extends Activity {
 	class OnClickListaLocais implements OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {		
-			Local local = ListaLocaisActivity.this.locais.get(position);
+//			Local local = ListaLocaisActivity.this.locais.get(position);
+//			
+//			String endereco = local.endereco;			
+//			endereco = endereco.replace(' ', '+');
+//
+//			String GEO_URI = "geo:0,0?q=";
+//			Uri uriGeo = Uri.parse(GEO_URI + endereco);
+//
+//			Intent it = new Intent(android.content.Intent.ACTION_VIEW, uriGeo);
+//			startActivity(it);		
 			
-			String endereco = local.endereco;			
-			endereco = endereco.replace(' ', '+');
-
-			String GEO_URI = "geo:0,0?q=";
-			Uri uriGeo = Uri.parse(GEO_URI + endereco);
-
-			Intent it = new Intent(android.content.Intent.ACTION_VIEW, uriGeo);
-			startActivity(it);		
+			Local local = ListaLocaisActivity.this.locais.get(position);	
+			
+			Intent it = new Intent(getApplicationContext(), LocalActivity.class);
+			it.putExtra("idLocal", local.getId());			
+			startActivity(it);
 		}
 		
 	}

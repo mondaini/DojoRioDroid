@@ -20,6 +20,11 @@
 	<TableRow>
 		<TextView android:id="@+id/textAgenda" />
 	</TableRow>
+	
+	<TableRow>
+		
+	</TableRow>
 
+	
 	
 </TableLayout>

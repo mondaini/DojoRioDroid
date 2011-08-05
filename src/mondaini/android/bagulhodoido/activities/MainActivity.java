@@ -21,11 +21,11 @@ public class MainActivity extends TabActivity{
         Intent intent;
         
         intent = new Intent(getApplicationContext(), ListaNoticiasActivity.class);
-        spec = tabHost.newTabSpec("noticias").setIndicator("Blog", res.getDrawable(R.drawable.rss_high)).setContent(intent);
+        spec = tabHost.newTabSpec("noticias").setIndicator("Blog", res.getDrawable(R.drawable.rss)).setContent(intent);
         tabHost.addTab(spec);
         
         intent = new Intent(getApplicationContext(), ListaLocaisActivity.class);
-        spec = tabHost.newTabSpec("locais").setIndicator("Onde?", res.getDrawable(R.drawable.calendar_high)).setContent(intent);
+        spec = tabHost.newTabSpec("locais").setIndicator("Onde?", res.getDrawable(R.drawable.calendar)).setContent(intent);
         tabHost.addTab(spec);
 		
 	}

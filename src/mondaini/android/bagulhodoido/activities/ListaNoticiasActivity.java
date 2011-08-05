@@ -42,9 +42,9 @@ public class ListaNoticiasActivity extends Activity{
 		}
 		
 	    @Override
-	    protected void onPostExecute(Boolean result) {	  
-	    	Toast.makeText(ListaNoticiasActivity.this, "Lista de notícias atualizada com sucesso!", Toast.LENGTH_LONG).show();
-			if (result == true){			
+	    protected void onPostExecute(Boolean result) {	  	    	
+			if (result == true){
+				Toast.makeText(ListaNoticiasActivity.this, "Lista de notícias atualizada com sucesso!", Toast.LENGTH_LONG).show();
 				noticiaAdapter = new NoticiaAdapter(ListaNoticiasActivity.this, noticias);			
 				lvNoticias.setOnItemClickListener(new OnClickListaNoticias(ListaNoticiasActivity.this, noticias));
 				lvNoticias.setAdapter(noticiaAdapter);
