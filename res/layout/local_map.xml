@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:stretchColumns="1">
-    
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:stretchColumns="1">
+
 	<TableRow>
-		<TextView android:id="@+id/textNomeLocalMap" android:textStyle="bold" android:layout_width="wrap_content" android:textSize="18sp" />	
+		<TextView android:id="@+id/textNomeLocalMap"
+			android:textStyle="bold" android:layout_width="wrap_content"
+			android:textSize="18sp" />
 	</TableRow>
 
 	<TableRow>
-		<TextView android:id="@+id/textEnderecoMap" />
-	</TableRow>
-	
-	<TableRow>
-		<TextView android:id="@+id/textDetalhesMap" />
+		<TextView android:text="Onde: " android:textStyle="bold"
+			android:layout_width="wrap_content" />
 	</TableRow>
 
 	<TableRow>
-		<TextView android:id="@+id/textAgendaMap" />
+		<TextView android:id="@+id/textEnderecoMap"
+			android:layout_width="wrap_content" />
+	</TableRow>
+
+	<TableRow>
+		<TextView android:id="@+id/textDetalhesMap"
+			android:layout_width="wrap_content" />
 	</TableRow>
 	
-	<TableRow >
+	<TableRow>
+		<TextView android:text="\nQuando: " android:textStyle="bold"
+			android:layout_width="wrap_content" />
+	</TableRow>
+	
+	<TableRow>
+		<TextView android:id="@+id/textAgendaMap"
+			android:layout_width="wrap_content" />
+	</TableRow>
+
+	<TableRow>
 		<com.google.android.maps.MapView
-			android:id="@+id/mapa"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:enabled="true"
-			android:clickable="true"
-			android:apiKey="0_CK7uBHqhyrxPsgFVRCpPU3_B_t3Egk54Q7xTQ" 
-		/>
-	</TableRow>	
-	<!-- 	DEBUG 0_CK7uBHqhyrxPsgFVRCpPU3_B_t3Egk54Q7xTQ	 -->
+			android:id="@+id/mapa" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:enabled="true"
+			android:clickable="true" android:apiKey="0_CK7uBHqhyrxPsgFVRCpPU3_B_t3Egk54Q7xTQ" />
+	</TableRow>
+	<!-- DEBUG 0_CK7uBHqhyrxPsgFVRCpPU3_B_t3Egk54Q7xTQ -->
 </TableLayout>

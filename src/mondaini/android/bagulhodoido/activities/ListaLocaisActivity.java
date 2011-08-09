@@ -1,6 +1,5 @@
 package mondaini.android.bagulhodoido.activities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import mondaini.android.bagulhodoido.R;

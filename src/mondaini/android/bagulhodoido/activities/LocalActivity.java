@@ -2,16 +2,26 @@ package mondaini.android.bagulhodoido.activities;
 
 import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.db.DBAdapter;
+import mondaini.android.bagulhodoido.db.json.JsonResponse;
+import mondaini.android.bagulhodoido.db.json.PlacemarkEntity;
 import mondaini.android.bagulhodoido.model.Local;
+import mondaini.android.bagulhodoido.util.MapPointOverlay;
+import mondaini.android.bagulhodoido.util.Validations;
 
+import org.springframework.web.client.RestTemplate;
+
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.gson.Gson;
 
 public class LocalActivity extends MapActivity{
 	private DBAdapter mDb;	
@@ -21,6 +31,9 @@ public class LocalActivity extends MapActivity{
 	private TextView textDetalhes;
 	private TextView textAgenda;
 	private Local local;
+	public String response;
+	private GeoPoint geoPoint;
+	private ProgressDialog dialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {			
@@ -33,17 +46,35 @@ public class LocalActivity extends MapActivity{
 		findViews();
 				
 		local = getLocal(idLocal);
+		
 		setLocalTextViews(local);
 		
-		MapController mapController = map.getController();
-		mapController.setZoom(21);
-		mapController.setCenter(setLocalMapCoordinates(local.endereco));	
+		if (Validations.isOnline(this)){
+			new requestAdressToGoogleMaps().execute();
+		}
+		else{
+			Toast.makeText(this, "Não foi possível carregar mapa.\nSem acesso à internet.", Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	private GeoPoint setLocalMapCoordinates(String endereco) {
-		//FIXME
-		double longitude = -122.0828878;
-		double latitude = 37.4220881;
+		String url = "http://maps.google.com/maps/geo?q={endereco}&output={output}&key={key}";
+		String output = "json";
+		String key = "0_CK7uBHqhyrxPsgFVRCpPU3_B_t3Egk54Q7xTQ";
+		double longitude = 0;
+		double latitude = 0;
+		
+		RestTemplate rest = new RestTemplate();
+		String response = (String)rest.getForObject(url, String.class, endereco, output, key);
+		Gson gson = new Gson();
+		JsonResponse json = gson.fromJson(response, JsonResponse.class);
+
+		for (PlacemarkEntity placemark : json.getPlacemark()){
+			longitude = placemark.getPoint().getCoordinates()[0];
+			latitude = placemark.getPoint().getCoordinates()[1];
+		}
+
+		json.getPlacemark();
 		
 		return new GeoPoint(calculateLatLng(latitude), calculateLatLng(longitude));	
 	}
@@ -88,4 +119,33 @@ public class LocalActivity extends MapActivity{
 		textAgenda.setText(local.agenda);
 	}
 	
+	private void setMapConfiguration(){
+		MapPointOverlay overlay = new MapPointOverlay(geoPoint, R.drawable.map_point);			
+		map.getOverlays().add(overlay);
+		map.setBuiltInZoomControls(true);		
+		MapController mapController = map.getController();
+		mapController.setZoom(17);
+		mapController.setCenter(geoPoint);	
+	}
+	
+	class requestAdressToGoogleMaps extends AsyncTask<Void, Void, Boolean>{
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			dialog = ProgressDialog.show(LocalActivity.this, "Buscando endereço", "Aguarde...", true);
+		}
+		
+		@Override
+		protected Boolean doInBackground(Void... arg0) {
+			geoPoint = setLocalMapCoordinates(local.endereco);
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Boolean result) {
+			setMapConfiguration();			
+			dialog.dismiss();
+			super.onPostExecute(result);
+		}
+	}
 }

@@ -53,12 +53,12 @@ public class DBAdapter {
 			
 		locais.add(new Object[]{"UFF",
 			"Rua Passo da Pátria, 156 – Boa Viagem – Niterói",
-			"Campus Praia Vermelha (campus de Engenharia da UFF) - Sala 230B – Bloco D {prédio novo)",
+			"Campus Praia Vermelha (campus de Engenharia da UFF) - Sala 230B – Bloco D (prédio novo)",
 			"Quinta-feira às 19h00"});
 		
 		locais.add(new Object[]{"UFF ",
 			"Rua Passo da Pátria, 156 – Boa Viagem – Niterói",
-			"Campus Praia Vermelha (campus de Engenharia da UFF) - Sala 230B – Bloco D {prédio novo)",
+			"Campus Praia Vermelha (campus de Engenharia da UFF) - Sala 230B – Bloco D (prédio novo)",
 			"Sexta-feira às 11h00"});
 						
 		locais.add(new Object[]{"IFF",

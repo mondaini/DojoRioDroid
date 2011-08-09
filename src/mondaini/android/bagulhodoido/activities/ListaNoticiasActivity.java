@@ -6,6 +6,7 @@ import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.adapters.NoticiaAdapter;
 import mondaini.android.bagulhodoido.model.Noticia;
 import mondaini.android.bagulhodoido.util.RSSReader;
+import mondaini.android.bagulhodoido.util.Validations;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +31,13 @@ public class ListaNoticiasActivity extends Activity{
 		setContentView(R.layout.noticia_list);
 		
 		this.lvNoticias = (ListView)this.findViewById(R.id.listNoticias);
-		new DownloadRSSFeedTask().execute();
+		
+		if (Validations.isOnline(this)){
+			new DownloadRSSFeedTask().execute();
+		}
+		else{
+			Toast.makeText(this, "Não foi possível carregar notícias.\nSem acesso à internet.", Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	

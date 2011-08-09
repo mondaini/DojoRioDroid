@@ -4,15 +4,9 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/home/filipe.mondaini/Downloads/google-gson-stream-1.7.1.jar"/>
-	<classpathentry kind="lib" path="/home/filipe.mondaini/Downloads/spring-android-1.0.0.M4.zip"/>
-	<classpathentry kind="lib" path="/home/filipe.mondaini/.m2/repository/org/springframework/android/spring-android-rest-template/1.0.0.M4/spring-android-rest-template-1.0.0.M4.jar">
-		<attributes>
-			<attribute name="maven.groupId" value="org.springframework.android"/>
-			<attribute name="maven.artifactId" value="spring-android-rest-template"/>
-			<attribute name="maven.version" value="1.0.0.M4"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="/home/filipe.mondaini/Utils/lib/spring-android-1.0.0.M4.zip"/>
+	<classpathentry kind="lib" path="/home/filipe.mondaini/Utils/lib/spring-android-core/1.0.0.M4/spring-android-core-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="/home/filipe.mondaini/Utils/lib/spring-android-rest-template/1.0.0.M4/spring-android-rest-template-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="/home/filipe.mondaini/Utils/lib/google-gson-1.7.1/gson-1.7.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

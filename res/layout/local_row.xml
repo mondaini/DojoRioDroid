@@ -10,15 +10,15 @@
 	</TableRow>
 
 	<TableRow>
-		<TextView android:id="@+id/textEndereco" />
+		<TextView android:id="@+id/textEndereco" android:layout_width="wrap_content" />
 	</TableRow>
 	
 	<TableRow>
-		<TextView android:id="@+id/textDetalhes" />
+		<TextView android:id="@+id/textDetalhes" android:layout_width="wrap_content" />
 	</TableRow>
 
 	<TableRow>
-		<TextView android:id="@+id/textAgenda" />
+		<TextView android:id="@+id/textAgenda" android:layout_width="wrap_content" />
 	</TableRow>
 	
 	<TableRow>

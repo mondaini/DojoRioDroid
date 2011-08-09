@@ -1,7 +1,9 @@
-An Android Application which I plan to include:
+An Android Application which currently include:
 
 * A RSS Reader from a Blog
 
-* Google Maps Showing where something cool is happenning.
+* Google Maps pointing where something cool happens.
 
-* Whatever my mind thinks it might be worthy. :-)
+Dependencies:
+Google Gson 1.7.1
+Spring Android 1.0.0.M4
