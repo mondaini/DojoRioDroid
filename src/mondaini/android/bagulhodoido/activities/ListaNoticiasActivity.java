@@ -2,11 +2,11 @@ package mondaini.android.bagulhodoido.activities;
 
 import java.util.List;
 
-import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.adapters.NoticiaAdapter;
 import mondaini.android.bagulhodoido.model.Noticia;
 import mondaini.android.bagulhodoido.util.RSSReader;
 import mondaini.android.bagulhodoido.util.Validations;
+import mondaini.android.dojorio.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

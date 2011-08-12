@@ -2,8 +2,8 @@ package mondaini.android.bagulhodoido.adapters;
 
 import java.util.List;
 
-import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.model.Noticia;
+import mondaini.android.dojorio.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

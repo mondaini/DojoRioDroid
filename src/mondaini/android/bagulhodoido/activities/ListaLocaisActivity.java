@@ -2,10 +2,10 @@ package mondaini.android.bagulhodoido.activities;
 
 import java.util.List;
 
-import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.adapters.LocalAdapter;
 import mondaini.android.bagulhodoido.db.DBAdapter;
 import mondaini.android.bagulhodoido.model.Local;
+import mondaini.android.dojorio.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;

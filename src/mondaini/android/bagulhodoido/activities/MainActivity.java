@@ -1,6 +1,6 @@
 package mondaini.android.bagulhodoido.activities;
 
-import mondaini.android.bagulhodoido.R;
+import mondaini.android.dojorio.R;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;

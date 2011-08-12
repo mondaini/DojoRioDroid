@@ -1,12 +1,12 @@
 package mondaini.android.bagulhodoido.activities;
 
-import mondaini.android.bagulhodoido.R;
 import mondaini.android.bagulhodoido.db.DBAdapter;
 import mondaini.android.bagulhodoido.db.json.JsonResponse;
 import mondaini.android.bagulhodoido.db.json.PlacemarkEntity;
 import mondaini.android.bagulhodoido.model.Local;
 import mondaini.android.bagulhodoido.util.MapPointOverlay;
 import mondaini.android.bagulhodoido.util.Validations;
+import mondaini.android.dojorio.R;
 
 import org.springframework.web.client.RestTemplate;
 
