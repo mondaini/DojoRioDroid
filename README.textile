@@ -1,9 +1,10 @@
-An Android Application which currently include:
+*An Android Application which currently include:* 
 
 * A RSS Reader from a Blog
 
 * Google Maps pointing where something cool happens.
 
-Dependencies:
-Google Gson 1.7.1
-Spring Android 1.0.0.M4
+*Dependencies: *
+
+* Google Gson 1.7.1
+* Spring Android 1.0.0.M4
